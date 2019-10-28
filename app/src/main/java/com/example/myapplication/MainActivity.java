@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+
 import static com.example.myapplication.R.id.btn;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -23,23 +25,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         EditText inp = findViewById(R.id.inp);
         String str = inp.getText().toString();
-        inp.setText("12345");
+        /*inp.setText("12345");*/
 
 
         TextView out = findViewById(R.id.txtout);
-        out.setText("Hello kk");
+       /* out.setText("Hello kk");*/
     }
     public void onClick(View v)
     {
-       Log.i(TAG,  "onClick:…………");
+        EditText inp = findViewById(R.id.inp);
+        String str = inp.getText()+"";
+       /* String str = ((Button)v).getText()+"";*/
+        double num = Double.parseDouble(str);
+        num = 1.8*num + 32;
+        BigDecimal c = new BigDecimal(num);
+        num = c.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        inp.setText(num+"");
+        /*((Button) v).setText(num+"");*/
+      /* Log.i(TAG,  "onClick:…………");
        TextView out = findViewById(R.id.txtout);
-       out.setText("Clicked");
+       out.setText("Clicked");*/
     }
-    public void abc(View v)
+   /* public void abc(View v)
     {
         Log.i(TAG,  "abc:…………");
         TextView out = findViewById(R.id.txtout);
         out.setText("abcabc");
-    }
+    }*/
 
 }
